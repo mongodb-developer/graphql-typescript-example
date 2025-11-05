@@ -1,0 +1,22 @@
+meta {
+  name: Delete Single User
+  type: graphql
+  seq: 5
+}
+
+post {
+  url: http://localhost:3000/graphql
+  body: graphql
+  auth: inherit
+}
+
+body:graphql {
+  mutation {
+    deleteUser(id: "4")
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

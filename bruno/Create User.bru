@@ -1,0 +1,28 @@
+meta {
+  name: Create User
+  type: graphql
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/graphql
+  body: graphql
+  auth: inherit
+}
+
+body:graphql {
+  mutation {
+    createUser(name: "Nic Raboy", email: "nic@example.com") {
+      id
+      name
+      email
+      age
+      createdAt
+    }
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

@@ -1,0 +1,28 @@
+meta {
+  name: Update Single User
+  type: graphql
+  seq: 6
+}
+
+post {
+  url: http://localhost:3000/graphql
+  body: graphql
+  auth: inherit
+}
+
+body:graphql {
+  mutation {
+    updateUser(id: "6903b39a7b31ee2234b3d159", name: "Nic Raboy") {
+      id
+      name
+      email
+      age
+      createdAt
+    }
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+}

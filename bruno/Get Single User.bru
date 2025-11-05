@@ -1,0 +1,29 @@
+meta {
+  name: Get Single User
+  type: graphql
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/graphql
+  body: graphql
+  auth: inherit
+}
+
+body:graphql {
+  query {
+    user(id: "6903b39a7b31ee2234b3d159") {
+      id
+      name
+      email
+      age
+      createdAt
+    }
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
