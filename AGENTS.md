@@ -75,6 +75,10 @@ src/
 - `db: Db | null` - Database instance
 - `client: MongoClient | null` - MongoDB client
 
+**Configuration:**
+- Reads `MONGODB_URI` (required), `DB_NAME` (optional), and `APP_NAME` (optional) from environment variables
+- `APP_NAME` is passed as an option to MongoClient for connection identification
+
 ### 3. User Service (`src/database/userService.ts`)
 **Pattern:** Data Access Object (DAO)
 
@@ -151,14 +155,17 @@ type User {
 ## Environment Variables
 
 ### Required
-- `MONGODB_URI` - MongoDB connection string (e.g., `mongodb://localhost:27017?appName=devrel-graphql`)
+- `MONGODB_URI` - MongoDB connection string (e.g., `mongodb://localhost:27017`)
 
 ### Optional
 - `DB_NAME` - Database name (default: `graphql_example`)
+- `APP_NAME` - Application name for MongoDB connection identification (default: `devrel-graphql`)
 - `PORT` - Server port (default: `3000`)
 
 ### Configuration
 Environment variables are loaded via `dotenv` package from `.env` file (not committed to git).
+
+**Note:** The `APP_NAME` is used by MongoDB for connection identification and monitoring. It's passed as an option to the MongoClient constructor rather than as part of the connection string.
 
 ## Development Commands
 

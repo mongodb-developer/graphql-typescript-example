@@ -14,10 +14,13 @@ export async function connectToDatabase(): Promise<Db> {
       throw new Error('MONGODB_URI is not set');
     }
     const DB_NAME = process.env.DB_NAME || 'graphql_example';
+    const APP_NAME = process.env.APP_NAME || 'devrel-graphql';
 
     console.log('🔌 Connecting to MongoDB...');
     
-    client = new MongoClient(MONGODB_URI);
+    client = new MongoClient(MONGODB_URI, {
+      appName: APP_NAME
+    });
     await client.connect();
     
     db = client.db(DB_NAME);

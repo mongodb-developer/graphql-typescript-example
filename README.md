@@ -1,6 +1,6 @@
 # GraphQL with MongoDB Example
 
-A production-ready GraphQL API built with Node.js, TypeScript, Apollo Server 4, Express, and MongoDB. This project demonstrates full CRUD operations with persistent data storage, proper error handling, and graceful shutdown mechanisms.
+A GraphQL API built with Node.js, TypeScript, Apollo Server 4, Express, and MongoDB. This project demonstrates full CRUD operations with persistent data storage, proper error handling, and graceful shutdown mechanisms.
 
 ## Features
 
@@ -48,7 +48,7 @@ npm install
 brew services start mongodb-community
 
 # 3. Create .env file with MongoDB connection
-echo "MONGODB_URI=mongodb://localhost:27017?appName=devrel-graphql" > .env
+echo "MONGODB_URI=mongodb://localhost:27017" > .env
 
 # 4. Start development server
 npm run dev:watch
@@ -77,17 +77,21 @@ mongod --dbpath /path/to/data/directory
 Create a `.env` file in the root directory (required for MongoDB connection):
 ```env
 # Required
-MONGODB_URI=mongodb://localhost:27017?appName=devrel-graphql
+MONGODB_URI=mongodb://localhost:27017
 
 # Optional (defaults shown)
 DB_NAME=graphql_example
+APP_NAME=devrel-graphql
 PORT=3000
 ```
 
 **Environment Variables:**
 - `MONGODB_URI` - MongoDB connection string (required)
 - `DB_NAME` - Database name (optional, default: `graphql_example`)
+- `APP_NAME` - Application name for MongoDB connection identification (optional, default: `devrel-graphql`)
 - `PORT` - Server port (optional, default: `3000`)
+
+**Note:** The `APP_NAME` is used by MongoDB for connection identification and monitoring purposes. It helps track which application is making connections in MongoDB logs and monitoring tools.
 
 ## Running the Server
 
@@ -366,7 +370,6 @@ The API implements comprehensive error handling:
 
 ## Additional Documentation
 
-- **[MONGODB_SETUP.md](./MONGODB_SETUP.md)** - Detailed MongoDB installation and configuration guide
 - **[AGENTS.md](./AGENTS.md)** - Comprehensive AI agent context and architectural documentation
 
 ## Author
